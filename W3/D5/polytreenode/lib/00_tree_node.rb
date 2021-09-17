@@ -19,9 +19,39 @@ class PolyTreeNode
     end
   end
 
+  def add_child(child_node)
+    child_node.parent = self
+  end
+
+  def remove_child(child_node)
+    raise "Not a child" if !self.children.include?(child_node)
+    child_node.parent = nil
+  end
+
+
+  # Searchables
+
+  def dfs(target_value)
+    return self if self.value == target_value
+
+    self.children.each do |child|
+      search_res = child.dfs(target_value)
+      unless search_res.nil?
+        return search_res
+      end
+    end
+    nil
+
+  end
+
+
 end
 
-# p node_1 = PolyTreeNode.new(1)
-# p node_2 = PolyTreeNode.new(2)
-# p node_1.children << node_2
-# p node_2.parent= node_1
+# class Searchable
+
+#   def dfs(target_value)
+#     return 
+
+#   end
+
+# end
