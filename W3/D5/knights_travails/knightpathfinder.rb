@@ -52,4 +52,30 @@ class KnightPathFinder
     end
   end
 
+  def find_node(root_node, end_pos)
+    return root_node if root_node.value == end_pos
+
+    root_node.children.each do |child|
+      search_res = find_node(child, end_pos)
+      return search_res unless search_res.nil?
+    end
+    nil
+  end
+
+  def find_path(end_pos)
+    self.build_move_tree
+
+    end_node = find_node(@root_node, end_pos)
+    self.trace_path_back(end_node) if !end_node.nil?
+  end
+
+  def trace_path_back(end_node)
+    path = [end_node.value]
+    until end_node.parent.nil?
+      path.unshift(end_node.parent.value)
+      end_node = end_node.parent 
+    end
+    path
+  end
+
 end
