@@ -7,4 +7,5 @@ class Piece
     @pos = pos
   end
 
+
 end
