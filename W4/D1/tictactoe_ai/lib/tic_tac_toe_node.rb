@@ -19,9 +19,56 @@ class TicTacToeNode
   end
 
   def losing_node?(evaluator)
+    # if the opponent of the evaluator won (opponent = next_mark)
+    #   losing_node for evaluator
+    #   not losing_node for opponent
+    # return true if @board.over? && @board.winner && evaluator == @next_mover_mark
+    # return false if @board.over? && @board.winner && evaluator != @next_mover_mark
+
+    if self.board.over?
+      return self.board.won? && self.board.winner != evaluator
+    end
+
+    return false if self.board.over? && self.board.winner.nil?
+    
+    # next_mover
+    # last move by opponent, evaluator's turn
+    if evaluator == self.next_mover_mark
+      children_nodes = self.children #next move = oppo
+      return children_nodes.all? do |child| #next move = oppo
+        child.losing_node?(evaluator)
+      end
+    # last move by evaluator, this is for the opponent
+    else # evaluator != self.next_mover_mark
+      children_nodes = self.children #next move = evaluator
+      return children_nodes.any? do |child|
+        child.losing_node?(evaluator)
+      end
+    end
   end
 
   def winning_node?(evaluator)
+    if self.board.over?
+      return self.board.won? && self.board.winner == evaluator
+    end
+
+    # return false if self.board.over? && self.board.winner.nil?
+    
+    # next_mover
+    # last move by opponent, evaluator's turn
+    if evaluator == self.next_mover_mark
+      children_nodes = self.children #next move = oppo
+      children_nodes.any? do |child| #next move = oppo
+
+        child.winning_node?(evaluator)
+      end
+    # last move by evaluator, this is for the opponent
+    else # evaluator != self.next_mover_mark
+      children_nodes = self.children #next move = evaluator
+      children_nodes.all? do |child|
+        child.winning_node?(evaluator)
+      end
+    end
   end
 
   # This method generates an array of all moves that can be made after
@@ -45,9 +92,4 @@ class TicTacToeNode
   #   {"board" => @board, "prev_move" => @prev_move_pos}
   # end
 
-
-
- 
-  
-  
 end
