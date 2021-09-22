@@ -10,7 +10,7 @@ attr_reader :direction
   def initialize(color, board, pos)
     super
     @direction = ""
-    horizontal_dirs
+    move_dirs
   end
 
   def symbol
