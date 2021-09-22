@@ -15,14 +15,16 @@ class Piece
   end
 
   def empty?
-
+    r, c = pos
+    return true if @board[r][c].is_a?(Nullpiece)
+    false
   end
 
   def valid_moves
     result = []
     (0..7).each do |r|
       (0..7).each do |c|
-        if @board[r][c].nil? && @board.valid_pos?([r,c]) #&& self.moves.include?([r,c])
+        if @board[r][c].nil? && @board.valid_pos?([r,c]) && self.moves.include?([r,c])
           result << [r,c]
         end
       end
@@ -34,9 +36,9 @@ class Piece
     @pos = val
   end
   
-  def symbol
-
-  end
+  # def symbol
+  #   @symbol = nil
+  # end
 
   private
 
