@@ -44,7 +44,7 @@ class Board
   end
 
   def find_king(color)
-    
+    # return opponent's king position
   end
 
   def move_piece!(start_pos, end_pos)
