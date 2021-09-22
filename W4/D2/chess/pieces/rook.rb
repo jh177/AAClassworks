@@ -5,18 +5,16 @@ class Rook < Piece
 
 include Slideable
 
+attr_reader :direction
+
   def initialize(color, board, pos)
     super
+    @direction = ""
+    horizontal_dirs
   end
 
   def symbol
     :Rook
-  end
-
-  def moves
-    horizontal_dirs
-    self.moves
-    # move_dirs --> self.moves
   end
 
   private
