@@ -1,4 +1,3 @@
-
 require_relative "./pieces/piece.rb"
 require_relative "./pieces/bishop.rb"
 require_relative "./pieces/king.rb"
@@ -7,7 +6,6 @@ require_relative "./pieces/nullpiece.rb"
 require_relative "./pieces/pawn.rb"
 require_relative "./pieces/queen.rb"
 require_relative "./pieces/rook.rb"
-
 
 class Board
 
@@ -130,10 +128,10 @@ class Board
   end
 
   # def print
-  #   @rows.each do |row|
-  #     row.each do |piece|
-  #       puts piece.to_s
-  #     end
+  #   puts " #{(0..7).to_a.join(' ')}"
+  #   @rows.each.with_index do |row,i|
+  #     output = row.map {|piece| piece.to_s}
+  #     puts "#{i} #{output.join(' ')}"
   #   end
   # end
 

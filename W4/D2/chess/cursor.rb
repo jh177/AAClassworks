@@ -1,4 +1,7 @@
 require "io/console"
+require_relative "board.rb"
+
+require "byebug"
 
 KEYMAP = {
   " " => :space,
@@ -78,7 +81,7 @@ class Cursor
   def handle_key(key)
     case key
     when :left, :right, :up, :down
-      self.update_pos(Moves[key])
+      update_pos(MOVES[key])
       nil
     when :return, :space
       cursor_pos
@@ -88,6 +91,9 @@ class Cursor
   end
 
   def update_pos(diff)
-     [cursor_pos, diff].transpose.map(&:sum)
+    debugger
+     result = [self.cursor_pos, diff].transpose.map(&:sum)
+     @cursor_pos = result if board.valid_pos?(result)
+     return @cursor_pos
   end
 end
