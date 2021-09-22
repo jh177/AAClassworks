@@ -71,7 +71,7 @@ class Board
 
       [2,3,4,5].product((0..7).to_a).each do |pos|
         r, c = pos
-        @rows[r][c] = Nullpiece.new
+        @rows[r][c] = Nullpiece.instance
       end
       
       @rows[0][0] = Rook.new("black", self, [0,0])
@@ -80,7 +80,7 @@ class Board
       @rows[7][7] = Rook.new("white", self, [7,7])
 
       @rows[0][1] = Knight.new("black", self, [0,1])
-      @rows[0][6] = Kngiht.new("black", self, [0,6])
+      @rows[0][6] = Knight.new("black", self, [0,6])
       @rows[7][1] = Knight.new("white", self, [7,1])
       @rows[7][6] = Knight.new("white", self, [7,6])
 
