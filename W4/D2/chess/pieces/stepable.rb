@@ -23,14 +23,18 @@ module Stepable
       KING_DIFFS.each do |dir_pos|
         move_pos = start_pos
         move_pos = plus_dir(move_pos, dir_pos)
-        result << move_pos if move_pos[0].between?(0,7) && move_pos[1].between?(0,7)
+        if @board.valid_pos?(move_pos) && @board[move_pos] != self.color
+          result << move_pos
+        end
       end
     else 
       start_pos = self.pos
       KNIGHT_DIFFS.each do |dir_pos|
         move_pos = start_pos
         move_pos = plus_dir(move_pos, dir_pos)
-        result << move_pos if move_pos[0].between?(0,7) && move_pos[1].between?(0,7)
+        if @board.valid_pos?(move_pos) && @board[move_pos] != self.color
+          result << move_pos
+        end
       end
     end
     result

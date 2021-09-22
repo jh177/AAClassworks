@@ -14,7 +14,7 @@ attr_reader :diff
   end
 
   def symbol
-    :Knight
+    :knight
   end
 
   protected

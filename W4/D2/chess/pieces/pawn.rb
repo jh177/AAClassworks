@@ -18,8 +18,11 @@ attr_accessor :at_start_row
     r,c = self.pos
     steps = forward_steps.map {|step| step * forward_dir}
     #[1],[1,2]
-    steps.each {|step| result << [r+step,c]}
-    result
+    steps.each do |step|
+      next_pos = [r+step, c]
+      result << next_pos if @board[next_pos].color != self.color
+    end
+    result + self.side_attacks
   end
 
   def at_start_row?
@@ -51,7 +54,16 @@ attr_accessor :at_start_row
   end
 
   def side_attacks
-    
+    result =[]
+    r,c = self.pos
+    if self.color = "black"
+      result << [r+1, c+1] if @board[[r+1,c+1]].color == "white" 
+      result << [r+1, c-1] if @board[[r+1,c-1]].color == "white" 
+    else
+      result << [r-1, c+1] if @board[[r-1,c+1]].color == "black" 
+      result << [r-1, c-1] if @board[[r-1,c-1]].color == "black" 
+    end
+    result
   end
 
 end

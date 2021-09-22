@@ -10,8 +10,12 @@ class Piece
     @pos = pos
   end
 
-  def to_s
+  def symbol
+    @symbol
+  end
 
+  def to_s
+    self.symbol.to_s[0]
   end
 
   def empty?
@@ -22,11 +26,9 @@ class Piece
 
   def valid_moves
     result = []
-    (0..7).each do |r|
-      (0..7).each do |c|
-        if @board[r][c].nil? && @board.valid_pos?([r,c]) && self.moves.include?([r,c])
-          result << [r,c]
-        end
+    self.moves.each do |pos|
+      if @board[pos].color == "none"
+        result << pos
       end
     end
     result
@@ -36,9 +38,7 @@ class Piece
     @pos = val
   end
   
-  # def symbol
-  #   @symbol = nil
-  # end
+ 
 
   private
 
