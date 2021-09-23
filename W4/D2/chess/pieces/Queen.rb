@@ -15,7 +15,7 @@ attr_reader :direction
   end
 
   def symbol
-    :Bishop
+    :Queen
   end
 
   private

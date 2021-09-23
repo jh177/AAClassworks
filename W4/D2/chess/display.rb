@@ -10,11 +10,28 @@ class Display
   end
 
   def render
+    print
+    curs = @cursor.get_input
+    system("clear")
+    puts "Use arrow key to move around"
+    
     #print the board
-    puts " #{(0..7).to_a.join(' ')}"
+    while curs.nil? || curs.is_a?(Array)
+      print
+      curs = @cursor.get_input
+      system("clear")
+    end
+    
+    #show the cursor, 
+    #cursor.get_input
+    #show the cursor
+  end
+
+  def print
+    puts "  #{(0..7).to_a.join(' ')}"
     @board.rows.each.with_index do |row,i|
-      output = row.map do |piece| 
-        if piece.pos == @cursor.cursor_pos
+      output = row.map.with_index do |piece, j| 
+        if [i,j] == @cursor.cursor_pos
           piece.to_s.colorize(:green)
         elsif piece.color == "black"
           piece.to_s.colorize(:blue)
@@ -26,13 +43,7 @@ class Display
       end
       puts "#{i} #{output.join(' ')}"
     end
-    
-    @cursor.get_input
-    #show the cursor, 
-    #cursor.get_input
-    #show the cursor
   end
-
 
 end
 

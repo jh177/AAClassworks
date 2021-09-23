@@ -28,7 +28,7 @@ class Board
 
   def valid_pos?(pos)
     row, col = pos
-    return false if !row.between?(0,7) || !col.between?(0,7) || @rows[pos].nil?
+    return false if !row.between?(0,7) || !col.between?(0,7)
     true
   end
 

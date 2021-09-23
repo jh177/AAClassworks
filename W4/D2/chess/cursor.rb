@@ -91,9 +91,9 @@ class Cursor
   end
 
   def update_pos(diff)
-    debugger
+    # debugger
      result = [self.cursor_pos, diff].transpose.map(&:sum)
-     @cursor_pos = result if board.valid_pos?(result)
+     @cursor_pos = result if @board.valid_pos?(result)
      return @cursor_pos
   end
 end
