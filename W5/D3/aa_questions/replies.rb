@@ -49,4 +49,36 @@ class Replies
     @parent_id = options['parent_id']
   end
 
+  def author
+    QuestionsDatabase.instance.execute(<<-SQL, self.author_id)
+      SELECT fname, lname
+      FROM users
+      WHERE id = ?
+    SQL
+  end
+
+  def question
+    QuestionsDatabase.instance.execute(<<-SQL, self.question_id)
+      SELECT title, body
+      FROM questions
+      WHERE id = ?
+    SQL
+  end
+
+  def parent_reply
+    QuestionsDatabase.instance.execute(<<-SQL, self.parent_id)
+      SELECT *
+      FROM replies
+      WHERE id = ?
+    SQL
+  end
+
+  def child_replies
+    QuestionsDatabase.instance.execute(<<-SQL, self.id)
+      SELECT *
+      FROM replies
+      WHERE parent_id = ?
+    SQL
+  end
+
 end

@@ -97,8 +97,11 @@ VALUES
 INSERT INTO
   replies (body, question_id, author_id, parent_id)
 VALUES
-  ('Go to aA!', 1, 3, NULL),
-  ('Just do it', 1, 2, 1);
+  ('Go to aA!', 1, 3, NULL), -- 1
+  ('Just do it', 1, 2, 1),
+  ('Mike is so cool!', 1, 1, 1),
+  ('aA is the best!', 1, 1, 2),
+  ('aA is the best!', 1, 3, 1);
 
 
 

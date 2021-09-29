@@ -47,4 +47,8 @@ class Question
     SQL
   end
 
+  def replies
+    Replies.find_by_question_id(self.id)
+  end
+
 end
