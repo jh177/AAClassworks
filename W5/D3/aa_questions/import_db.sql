@@ -1,8 +1,12 @@
 PRAGMA foreign_keys = ON;
 
 --replies - questions likes -- questions follows -- questions -- users
-
+DROP TABLE IF EXISTS replies;
+DROP TABLE IF EXISTS question_likes;
+DROP TABLE IF EXISTS question_follows;
 DROP TABLE IF EXISTS questions;
+DROP TABLE IF EXISTS users;
+
 
 CREATE TABLE questions (
   id INTEGER PRIMARY KEY,
@@ -13,7 +17,6 @@ CREATE TABLE questions (
   FOREIGN KEY (author_id) REFERENCES users(id)
 );
 
-DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
   id INTEGER PRIMARY KEY,
@@ -21,7 +24,6 @@ CREATE TABLE users (
   lname TEXT NOT NULL
 );
 
-DROP TABLE IF EXISTS question_follows;
 
 CREATE TABLE question_follows (
   -- user_id | question
@@ -40,7 +42,6 @@ CREATE TABLE question_follows (
   FOREIGN KEY (question_id) REFERENCES questions(id)
 );
 
-DROP TABLE IF EXISTS question_likes;
 
 CREATE TABLE question_likes(
   id INTEGER PRIMARY KEY,
@@ -51,7 +52,6 @@ CREATE TABLE question_likes(
   FOREIGN KEY (question_id) REFERENCES questions(id)
 );
 
-DROP TABLE IF EXISTS replies;
 
 CREATE TABLE replies (
   id INTEGER PRIMARY KEY,
@@ -61,7 +61,7 @@ CREATE TABLE replies (
   parent_id INTEGER,
 
   FOREIGN KEY (question_id) REFERENCES questions(id),
-  FOREIGN KEY (author_id) REFERENCES users(id),
+  FOREIGN KEY (author_id) REFERENCES users(id)
   FOREIGN KEY (parent_id) REFERENCES replies(id)
 );
 
@@ -94,11 +94,11 @@ VALUES
   (1, 1),
   (2, 2);
 
--- INSERT INTO
---   replies (body, question_id, author_id, parent_id)
--- VALUES
---   ('Go to aA!', 1, 3, NULL),
---   ('Just do it', 2, 2, NULL);
+INSERT INTO
+  replies (body, question_id, author_id, parent_id)
+VALUES
+  ('Go to aA!', 1, 3, NULL),
+  ('Just do it', 1, 2, 1);
 
 
 
