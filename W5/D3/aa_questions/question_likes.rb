@@ -15,6 +15,20 @@ class QuestionLikes
     QuestionLikes.new(data.first)
   end
 
+  def self.num_likes_for_question_id(question_id)
+    data = QuestionsDatabase.instance.execute(<<-SQL, question_id)
+      SELECT COUNT(user)
+      FROM question_likes
+      GROUP BY ?
+      ORDER BY COUNT(user) DESC
+    SQL
+  end
+
+  # questions.id |  users  | after collapsed COUNT()
+    #   1        |   1          |     2
+    #   1        |   2
+    #   2        |   2
+
   def initialize(options)
     @id = options['id']
     @user = options['user']
