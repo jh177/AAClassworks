@@ -76,8 +76,8 @@ Response.create(user_id: ted.id, question_id: q6.id, answer_choices_id: ac11.id)
 Response.create(user_id: bobby.id, question_id: q5.id, answer_choices_id: ac9.id)
 Response.create(user_id: bobby.id, question_id: q6.id, answer_choices_id: ac11.id)
 
-Response.create(user_id: aji.id, question_id: q7.id, answer_choices_id: ac13.id)
-Response.create(user_id: aji.id, question_id: q8.id, answer_choices_id: ac15.id)
+Response.create(user_id: ted.id, question_id: q7.id, answer_choices_id: ac13.id)
+Response.create(user_id: ted.id, question_id: q8.id, answer_choices_id: ac15.id)
 Response.create(user_id: lucki.id, question_id: q7.id, answer_choices_id: ac13.id)
 Response.create(user_id: lucki.id, question_id: q8.id, answer_choices_id: ac16.id)
 
