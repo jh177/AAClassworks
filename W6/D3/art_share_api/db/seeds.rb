@@ -10,6 +10,8 @@ ActiveRecord::Base.transaction do
   User.destroy_all
   Artwork.destroy_all
   ArtworkShare.destroy_all
+  Comment.destroy_all
+  Like.destroy_all
   # User.delete_all
   # Artwork.delete_all
   # ArtworkShare.delete_all
@@ -44,5 +46,12 @@ comment1 = Comment.create(user_id: aji.id, artwork_id: artwork1.id, body: "Seems
 comment2 = Comment.create(user_id: bobby.id, artwork_id: artwork1.id, body: "Actually slow")
 comment3 = Comment.create(user_id: jared.id, artwork_id: artwork3.id, body: "Fun show")
 comment4 = Comment.create(user_id: aji.id, artwork_id: artwork4.id, body: "This is my work!")
+
+like1 = Like.create(liker_id: aji.id, likeable_type: :Artwork, likeable_id: artwork1.id)
+like2 = Like.create(liker_id: aji.id, likeable_type: :Comment, likeable_id: comment4.id)
+like3 = Like.create(liker_id: ted.id, likeable_type: :Artwork, likeable_id: artwork1.id)
+like4 = Like.create(liker_id: wendy.id, likeable_type: :Comment, likeable_id: comment4.id)
+like5 = Like.create(liker_id: richard.id, likeable_type: :Artwork, likeable_id: artwork4.id)
+like6 = Like.create(liker_id: lucki.id, likeable_type: :Comment, likeable_id: comment2.id)
 
 end
