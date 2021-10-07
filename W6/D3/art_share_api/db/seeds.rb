@@ -7,9 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 ActiveRecord::Base.transaction do
-  User.delete_all
-  Artwork.delete_all
-  ArtworkShare.delete_all
+  User.destroy_all
+  Artwork.destroy_all
+  ArtworkShare.destroy_all
+  # User.delete_all
+  # Artwork.delete_all
+  # ArtworkShare.delete_all
 
 
 richard = User.create(username: 'Richard')
@@ -36,5 +39,10 @@ share5 = ArtworkShare.create(artwork_id: artwork3.id, viewer_id: monica.id)
 share6 = ArtworkShare.create(artwork_id: artwork4.id, viewer_id: jian.id)
 share7 = ArtworkShare.create(artwork_id: artwork4.id, viewer_id: lucki.id)
 share8 = ArtworkShare.create(artwork_id: artwork4.id, viewer_id: richard.id)
+
+comment1 = Comment.create(user_id: aji.id, artwork_id: artwork1.id, body: "Seems fast")
+comment2 = Comment.create(user_id: bobby.id, artwork_id: artwork1.id, body: "Actually slow")
+comment3 = Comment.create(user_id: jared.id, artwork_id: artwork3.id, body: "Fun show")
+comment4 = Comment.create(user_id: aji.id, artwork_id: artwork4.id, body: "This is my work!")
 
 end
