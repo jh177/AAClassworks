@@ -10,6 +10,7 @@
 #  updated_at :datetime         not null
 #
 class Comment < ApplicationRecord
+  validates :user_id, :artwork_id, :body, presence: true
 
   belongs_to :author,
     primary_key: :id,
