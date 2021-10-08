@@ -1,0 +1,5 @@
+class CatsController < ApplicationController
+
+  
+
+end

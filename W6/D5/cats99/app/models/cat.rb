@@ -14,9 +14,9 @@
 class Cat < ApplicationRecord
   CATCOLOR = ['black', 'white', 'purple', 'yellow', 'grey', 'brown']
 
-  validates :birth_date, :name, :color, :sex, :description, presence: true, 
-    inclusion: {in: CATCOLOR, message: "#{color} is not a valid color"},
-    inclusion: {in: :sex, message: "M or F"}
+  validates :birth_date, :name, :color, :sex, :description, presence: true
+  validates :color, inclusion: {in: CATCOLOR, message: "#is not a valid color"}
+  validates :sex, inclusion: {in: %w(M F), message: "sex input is not valid"}
 
   def age
     today = Time.now
