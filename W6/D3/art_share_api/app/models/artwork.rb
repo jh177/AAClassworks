@@ -6,6 +6,7 @@
 #  title     :string           not null
 #  image_url :string           not null
 #  artist_id :integer          not null
+#  favorited :boolean
 #
 class Artwork < ApplicationRecord
   validates :title, uniqueness: { 
@@ -35,5 +36,9 @@ class Artwork < ApplicationRecord
     dependent: :destroy
 
   has_many :likes, as: :likeable
+
+  has_many :likers,
+    through: :likes,
+    source: :liker
 
 end

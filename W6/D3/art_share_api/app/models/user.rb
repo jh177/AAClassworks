@@ -38,4 +38,14 @@ class User < ApplicationRecord
     foreign_key: :liker_id,
     class_name: :Like
 
+  has_many :liked_comments,
+    through: :likes,
+    source: :likeable,
+    source_type: :Comment
+
+  has_many :liked_artworks,
+    through: :likes,
+    source: :likeable,
+    source_type: :Artwork
+
 end

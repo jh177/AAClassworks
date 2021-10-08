@@ -23,5 +23,9 @@ class Comment < ApplicationRecord
     class_name: :Artwork
 
   has_many :likes, as: :likeable
+
+  has_many :likers,
+    through: :likes,
+    source: :liker
   
 end

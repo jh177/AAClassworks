@@ -39,6 +39,11 @@ class ArtworksController < ApplicationController
     render json: artwork
   end
 
+  def favorited
+    
+  end
+  
+
   private
   def artwork_params
     params.require(:artwork).permit(:title, :image_url, :artist_id)

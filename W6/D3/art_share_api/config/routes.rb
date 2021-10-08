@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   resources :users, only:[:index, :show, :update, :create, :destroy] do
     resources :artworks, only:[:index]
     resources :comments, only:[:index]
+    resources :artworks do
+        member do
+          get 'favorited'
+        end
+      end
   end
 
   
@@ -10,7 +15,7 @@ Rails.application.routes.draw do
     resources :comments, only:[:index]
   end
 
-
+  
 
   resources :artwork_shares, only:[:create, :destroy]
 
