@@ -1,0 +1,15 @@
+<h1>Create New Cat</h1>
+
+<form action = "<%= cats_url %>" method = "POST" >
+  <label>Name:
+    <input type="text" name="cat[name]" value = "<%= @cat.name%>"/> 
+  </label>
+  <br/>
+  <label>Color:
+    <input type="text" name="cat[color]" value = "<%= @cat.color%>"/> 
+  </label>
+  <br/>
+  <label>Sex:
+    <input type="text" name="cat[sex]" value = "<%= @cat.sex%>"/> 
+  </label>
+  <br/>
