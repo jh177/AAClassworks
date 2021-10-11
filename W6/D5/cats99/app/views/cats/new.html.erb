@@ -1,15 +1,41 @@
 <h1>Create New Cat</h1>
 
 <form action = "<%= cats_url %>" method = "POST" >
+  
   <label>Name:
-    <input type="text" name="cat[name]" value = "<%= @cat.name%>"/> 
+    <input type="text" name="cat[name]"/> 
   </label>
   <br/>
-  <label>Color:
-    <input type="text" name="cat[color]" value = "<%= @cat.color%>"/> 
-  </label>
-  <br/>
+
+  <label>Color:</label>
+  <select name="cat[color]">
+    <option value="defalut" disabled selected>-- select a color --</option>
+    <option value="black">black</option>
+    <option value="white">white</option>
+    <option value="purple">purple</option>
+    <option value="yellow">yellow</option>
+    <option value="grey">grey</option>
+    <option value="brown">brown</option>
+  </select>
+  <br>
+
   <label>Sex:
-    <input type="text" name="cat[sex]" value = "<%= @cat.sex%>"/> 
+    <input type="radio" id="M" name="cat[sex]" value="M">
+  <label for="M">Male</label>
+  <br>
+  <input type="radio" id="F" name="cat[sex]" value="F">
+  <label for="F">Female</label>
+  <br>
+
+  <label>Birth date:
+    <input type="date" name="cat[birth_date]">
   </label>
-  <br/>
+  <br>
+
+  <label>Description:
+    <input type="textarea" name="cat[description]">
+  </label>
+  <br>
+
+  <input type="submit" value="Create Cat">
+ </form>

@@ -1,13 +1,15 @@
 <h1> All Cats </h1>
 
-<!-- <a href= "<%#= new_cat_url %>"> New Cat </a> -->
+<a href="<%= new_cat_url %>">Create new cat</a>
 
 <ul>
-  <% @cats.each do |cat|%>
-    <li> <%= cat.birth_date %> </li>
-    <li> <%= cat.color %> </li>
+  <% @cats.each do |cat| %>
     <li> <%= cat.name %> </li>
+    <li> <%= cat.color %> </li>
     <li> <%= cat.sex %> </li>
+    <li> <%= cat.birth_date %> </li>
     <li> <%= cat.description %> </li>
+    <br>
   <% end %>
 </ul>
+
