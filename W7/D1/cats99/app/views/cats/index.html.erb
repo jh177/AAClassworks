@@ -1,0 +1,11 @@
+<h1>Cats upon cats!</h1>
+
+<!-- <a href="<%#=new_user_url%>">Sign Up</a> -->
+
+<ul>
+  <% @cats.each do |cat| %>
+    <li><a href="<%= cat_url(cat) %>"><%= cat.name %></a></li>
+  <% end %>
+</ul>
+
+<a href="<%= new_cat_url %>">Create cat</a>
