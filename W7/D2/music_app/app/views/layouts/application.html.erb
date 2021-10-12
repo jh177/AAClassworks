@@ -10,6 +10,24 @@
   </head>
 
   <body>
+    <header>
+      <h1>Music App</h1>
+        <% if logged_in? %>
+          <h2> Hello, <%= current_user.email %> </h2>
+          <form action="<%=sessions_url%>" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <%= auth_token %>
+            <input type="submit" value="Log out">
+            <br>
+          </form>
+        <% else %>
+          <a href="<%=new_sessions_url%>">Log In</a>
+          <br>
+          <a href="<%=new_user_url %>">Sign Up</a>
+          <br>
+        <% end %>
+    </header>
+    <br>
     <%= yield %>
   </body>
 </html>
