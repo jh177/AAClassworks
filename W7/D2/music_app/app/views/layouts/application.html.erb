@@ -11,7 +11,7 @@
 
   <body>
     <header>
-      <h1>Music App</h1>
+      <h1 font:snazzy>Music App</h1>
         <% if logged_in? %>
           <h2> Hello, <%= current_user.email %> </h2>
           <form action="<%=sessions_url%>" method="POST">
@@ -29,5 +29,14 @@
     </header>
     <br>
     <%= yield %>
+
+    <% if flash[:errors] %>
+      <ol>
+        <% flash[:errors].each do |error| %>
+          <li class="error"><%= error %></li>
+        <% end %>
+      </ol>
+    <% end %>
+    
   </body>
 </html>

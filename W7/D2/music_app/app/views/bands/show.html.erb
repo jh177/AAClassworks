@@ -1,0 +1,13 @@
+<h1>Band Info</h1>
+
+<h2><%= @band.name %></h2>
+
+<a href="<%=bands_url%>">Go back to Bands List</a>
+<br>
+<br>
+
+<form action="<%=band_url(@band)%>" method="POST">
+<%=auth_token%>
+<input type="hidden" name="_method" value="DELETE">
+<input type="submit" value="Delete this band">
+</form>

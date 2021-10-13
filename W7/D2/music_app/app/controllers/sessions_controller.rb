@@ -15,7 +15,8 @@ class SessionsController < ApplicationController
       # render json: "good"
       redirect_to user_url(@user)
     else
-      render json: "Not found", status: 401
+      flash[:errors] = ["Invalid Username or Password"]
+      redirect_to new_sessions_url
     end
   end
 
