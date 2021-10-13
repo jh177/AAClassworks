@@ -10,9 +10,19 @@
 
   <body>
     <header>
-        <a href="<%= new_user_url %>">Sign Up!</a>
+      <% if logged_in? %>
+        <h2>Hello, <%= current_user.user_name %></h2>
+          <form action="<%=sessions_url%>" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Log Out">
+            <br>
+          </form>
+      <% else %>
+        <a href="<%= new_user_url %>">Sign Up</a>
         <br>
-        <a href="<%= new_session_url %>">Log In!</a>
+        <a href="<%= new_session_url %>">Log In</a>
+        <br>
+      <% end %>
     </header>
     
     <%= yield %>
