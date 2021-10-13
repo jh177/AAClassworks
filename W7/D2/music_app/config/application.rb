@@ -16,6 +16,6 @@ module MusicApp
     # the framework and any gems in your application.
 
     #disable CSRF protection for testing with Postman
-    config.action_controller.default_protect_from_forgery = false
+    # config.action_controller.default_protect_from_forgery = false
   end
 end
