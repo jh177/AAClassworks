@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
       session[:session_token] = user.reset_session_token!
       redirect_to cats_url
     else
-      render json: "Invalid password"
+      flash[:errors] = ["Invalid password"]
+      redirect_to new_sessions_url
     end
 
   end
