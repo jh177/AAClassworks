@@ -1,0 +1,17 @@
+button:hover {
+  background: $lightest-gray;
+  text-decoration: underline;
+}
+
+.article-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  height: 20px;
+  gap: 10px;
+}
+
+// .article-links li{
+//   flex-basis: auto;
+// }

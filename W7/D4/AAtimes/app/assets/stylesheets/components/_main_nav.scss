@@ -1,0 +1,52 @@
+.main-nav {
+  border-bottom: 1px solid lightgrey;
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  align-items: center;
+}
+
+.left-nav > ul,
+.right-nav > ul {
+  display: flex;
+}
+
+.left-nav {
+  
+  > ul {
+    > li {
+      padding: 0 10px;
+      font-family: "Times New Roman", Times, Serif;
+      font-size: 15px;
+      text-transform: uppercase;
+    }
+  }
+
+  span {
+
+  }
+}
+
+.right-nav  {
+
+  > ul {
+
+    > li {
+      padding: 0 10px;
+    }
+
+    > li:last-of-type {
+  
+    }
+  }
+  
+  i {
+
+  }
+}
+
+.left-nav > ul > li:hover,
+.right-nav > ul > li:last-of-type:hover {
+  background: $lightest-gray;
+  font-size: 20px;
+}
