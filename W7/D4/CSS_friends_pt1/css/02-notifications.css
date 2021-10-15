@@ -1,0 +1,34 @@
+/* PHASE 2: Notifications */
+.badge{
+  background: black;
+  padding: 1px 6px;
+  border-radius: 50%;
+}
+
+
+#notifications {
+  position: relative
+}
+
+.notifications-list{
+  position: absolute;
+  display: none;
+  color: black;
+  padding: 0;
+}
+
+.notifications-list li{
+  white-space: nowrap;
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+
+#notifications:hover .notifications-list{
+  display: block;
+  background: white;
+}
+
+.notifications-list li:hover a{
+  background: lightyellow;
+}
