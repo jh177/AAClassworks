@@ -1,0 +1,11 @@
+<h1>Edit User</h1>
+
+<form action="<%= user_url(@user) %>" method="POST">
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="PATCH">
+
+  <label for="username">Username:</label>
+  <input id="username" type="text" name="user[username]" value="<%=@user.username%>">
+
+  <input type="submit" value="Update User">
+</form>

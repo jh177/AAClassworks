@@ -1,0 +1,18 @@
+<h1>User's Posts</h1>
+
+<h3><%= @user.username %></h3>
+
+<form action="<%=user_url(@user)%>" method="POST">
+<%= auth_token %>
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete User">
+</form>
+
+
+<h3>Moderating</h3>
+
+<ul>
+  <% @user.subs.each do |sub| %>
+    <li><a href="<%= sub_url(sub) %>"><%= sub.title %></a></li>
+  <% end %>
+</ul>
