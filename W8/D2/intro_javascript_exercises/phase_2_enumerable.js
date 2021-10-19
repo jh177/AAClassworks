@@ -33,18 +33,18 @@ Array.prototype.myReduce = function(callback, initialValue) {
   } else {
     acc = this.shift();
   }
-  console.log(this)
+  // console.log(this)
   this.myEach(el => {
-    callback(acc, el);
+    acc = callback(acc, el);
   })
   return acc;
 }
 
 // without initialValue
-let test = 0;
-[1, 2, 3].myReduce(function(acc, el) {
-  return acc + el;
-}); // => 6
+// let test = 0;
+// [1, 2, 3].myReduce(function(acc, el) {
+//   return acc + el;
+// }); // => 6
 
 // with initialValue
 // [1, 2, 3].myReduce(function(acc, el) {
