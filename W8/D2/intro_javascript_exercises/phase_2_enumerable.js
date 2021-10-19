@@ -24,3 +24,30 @@ Array.prototype.myMap = function(callback) {
 }
 
 // console.log([1, 2, 3].myMap(cb));
+
+
+Array.prototype.myReduce = function(callback, initialValue) {
+  let acc;
+  if (initialValue !== undefined) {
+    acc = initialValue;
+  } else {
+    acc = this.shift();
+  }
+  console.log(this)
+  this.myEach(el => {
+    callback(acc, el);
+  })
+  return acc;
+}
+
+// without initialValue
+
+let array = [1, 2, 3];
+array.myReduce(function(acc, el) {
+  return acc + el;
+}); // => 6
+
+// with initialValue
+// [1, 2, 3].myReduce(function(acc, el) {
+//   return acc + el;
+// }, 25); // => 31
