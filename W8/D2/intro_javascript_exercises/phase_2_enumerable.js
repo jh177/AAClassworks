@@ -41,9 +41,8 @@ Array.prototype.myReduce = function(callback, initialValue) {
 }
 
 // without initialValue
-
-let array = [1, 2, 3];
-array.myReduce(function(acc, el) {
+let test = 0;
+[1, 2, 3].myReduce(function(acc, el) {
   return acc + el;
 }); // => 6
 
