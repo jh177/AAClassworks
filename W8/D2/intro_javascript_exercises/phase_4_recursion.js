@@ -44,10 +44,21 @@ function fibonacci(n) {
 }
 
 function deepDup(array) {
-  if (!array instanceof Array) {
-    return array;
-  }
-  return array.map((el) => 
-    deepDup(el)
-  );
+  let result = []
+  array.forEach(el => {
+    if (el instanceof Array) {
+      result.push(deepDup(el));
+    } else {
+      result.push(el);
+    }
+  })
+  return result;
 }
+  
+//   if (!array instanceof Array) {
+//     return array;
+//   }
+//   return array.map((el) => 
+//     deepDup(el)
+//   );
+// }
