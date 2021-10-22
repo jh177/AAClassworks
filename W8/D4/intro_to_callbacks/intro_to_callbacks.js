@@ -74,12 +74,12 @@ function addNumbers(sum, numsLeft, completionCallback) {
 
 // absurdBubbleSort
 
-const readline = require("readline");
+// const readline = require("readline");
 
-const reader = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+// const reader = readline.createInterface({
+//   input: process.stdin,
+//   output: process.stdout
+// });
 
 // Write this first.
 function askIfGreaterThan(el1, el2, callback) {
@@ -153,7 +153,44 @@ function absurdBubbleSort(arr, sortCompletionCallback) {
   outerBubbleSortLoop(true)
 }
 
-absurdBubbleSort([3, 2, 1], function (arr) {
-  console.log("Sorted array: " + JSON.stringify(arr));
-  reader.close();
-});
+// absurdBubbleSort([3, 2, 1], function (arr) {
+//   console.log("Sorted array: " + JSON.stringify(arr));
+//   reader.close();
+// });
+
+
+//Function Calling
+
+//1
+Function.prototype.myBind = (context) => {
+  return () => this.apply(context);
+};
+
+//2
+Function.prototype.myBind = function(context) {
+  return () => this.apply(context);
+}
+
+
+class Lamp {
+  constructor() {
+    this.name = "a lamp";
+  }
+}
+
+const turnOn = function () {
+  console.log("Turning on " + this.name);
+};
+
+const lamp = new Lamp();
+
+// turnOn(); // should not work the way we want it to
+
+const boundTurnOn = turnOn.bind(lamp);
+const myBoundTurnOn = turnOn.myBind(lamp);
+
+// boundTurnOn(); // should say "Turning on a lamp"
+// myBoundTurnOn(); // should say "Turning on a lamp"
+// // console.log(turnOn);
+
+
