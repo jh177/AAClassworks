@@ -1,11 +1,11 @@
-// function sum() {
-//   let arg = Array.from(arguments);
-//   let sum = 0
-//   arg.forEach(num => {
-//     sum += num;
-//   })
-//   return sum;
-// }
+function sum() {
+  let arg = Array.from(arguments);
+  let sum = 0
+  arg.forEach(num => {
+    sum += num;
+  })
+  return sum;
+}
 
 function sum(...args) {
   let sum = 0
@@ -20,16 +20,16 @@ function sum(...args) {
 
 
 
-// Function.prototype.myBind = function(context) {
-//   let boundArgs = Array.from(arguments).slice(1);
-//   let that = this
-//   return function() {
-//     let callArgs = Array.from(arguments);
-//     let allArgs = boundArgs.concat(callArgs)
-//     //arguments would be the args for the first scope
-//     that.apply(context, allArgs)
-//   }
-// }
+Function.prototype.myBind = function(context) {
+  let boundArgs = Array.from(arguments).slice(1);
+  let that = this
+  return function() {
+    let callArgs = Array.from(arguments);
+    let allArgs = boundArgs.concat(callArgs)
+    //arguments would be the args for the first scope
+    that.apply(context, allArgs)
+  }
+}
 
 Function.prototype.myBind = function(context, ...boundArgs) {
   return (...callArgs) => {
