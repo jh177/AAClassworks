@@ -9,8 +9,8 @@
 
 class FollowToggle {
   constructor(el){
-    console.log(this);
-    console.log(el);
+    // console.log(this);
+    // console.log(el);
     // console.log(el.dataset);
     this.userId = el.dataset.userId;
     this.followState = el.dataset.initialFollowState;
@@ -27,6 +27,32 @@ class FollowToggle {
       this.element.textContent = "Unfollow!";
     }
   }
+
+  handleClick(e) {
+    e.preventDefault();
+    if (!this.followState) {
+      this.followState = true;
+      this.render();
+      console.log("created")
+      return $.ajax({
+        method: "POST",
+        url: `/users/${this.userId}/follow`,
+        data: {
+          followee_id: this.userId
+        }
+      })
+    } else {
+      this.followState = false;
+      this.render();
+      console.log("deleted")
+      return $.ajax({
+        method: "DELETE",
+        url: `/users/${this.userId}/follow`
+      })
+    }
+  }
+
+
 }
 
 module.exports = FollowToggle;
@@ -69,16 +95,19 @@ var __webpack_exports__ = {};
   \*****************************/
 const FollowToggle = __webpack_require__(/*! ./follow_toggle.js */ "./frontend/follow_toggle.js")
 
-$(function (){
-  $('.follow-toggle').each((idx, element) => {
-    new FollowToggle(element);
-  })
-})
+//----wrap in ajax function----
+// $(function (){
+//   $('.follow-toggle').each((idx, element) => {
+//     new FollowToggle(element);
+//   })
+// })
+
+var followToggleArr = [];
 
 const callConstructor = () => {
   //call follow toggle construcor on all the buttons
   $('.follow-toggle').each((idx, element) => {
-      new FollowToggle(element);
+      followToggleArr.push(new FollowToggle(element));
     })
   // let buttons = document.querySelectorAll(".follow-toggle");
   // buttons.forEach(el => {
@@ -87,6 +116,22 @@ const callConstructor = () => {
 };
 
 $(callConstructor)
+
+const setEventListeners = () => {
+  $('.follow-toggle').on('click', e=>{
+      e.preventDefault();
+
+      let target = e.target
+      let theToggle;
+      followToggleArr.forEach(el => {
+        if (el.element===target) {theToggle = el}
+      })
+
+      theToggle.handleClick(e);
+    })
+}
+
+$(setEventListeners)
 })();
 
 /******/ })()

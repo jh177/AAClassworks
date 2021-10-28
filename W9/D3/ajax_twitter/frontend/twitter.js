@@ -1,15 +1,18 @@
 const FollowToggle = require("./follow_toggle.js")
 
-$(function (){
-  $('.follow-toggle').each((idx, element) => {
-    new FollowToggle(element);
-  })
-})
+//----wrap in ajax function----
+// $(function (){
+//   $('.follow-toggle').each((idx, element) => {
+//     new FollowToggle(element);
+//   })
+// })
+
+var followToggleArr = [];
 
 const callConstructor = () => {
   //call follow toggle construcor on all the buttons
   $('.follow-toggle').each((idx, element) => {
-      new FollowToggle(element);
+      followToggleArr.push(new FollowToggle(element));
     })
   // let buttons = document.querySelectorAll(".follow-toggle");
   // buttons.forEach(el => {
@@ -18,3 +21,19 @@ const callConstructor = () => {
 };
 
 $(callConstructor)
+
+const setEventListeners = () => {
+  $('.follow-toggle').on('click', e=>{
+      e.preventDefault();
+
+      let target = e.target
+      let theToggle;
+      followToggleArr.forEach(el => {
+        if (el.element===target) {theToggle = el}
+      })
+
+      theToggle.handleClick(e);
+    })
+}
+
+$(setEventListeners)
