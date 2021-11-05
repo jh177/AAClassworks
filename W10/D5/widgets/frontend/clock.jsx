@@ -27,7 +27,8 @@ class Clock extends React.Component {
     return (
      <div> 
        <h1 className="clock">Clock </h1>
-        <a className="clock"> {this.state.time.toLocaleString()} </a>
+       <a className="clock"> {this.state.time.getFullYear()}-{this.state.time.getMonth() + 1}-{this.state.time.getDate()}</a>
+        <a className="clock"> {this.state.time.getHours()}:{this.state.time.getMinutes()}:{this.state.time.getSeconds()}</a>
      </div>
     );
   }
