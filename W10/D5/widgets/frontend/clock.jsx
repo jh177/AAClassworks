@@ -6,8 +6,7 @@ class Clock extends React.Component {
     this.state = {
      time: new Date()
     }
-    this.tick.bind(this);
-    this.setState.bind(this);
+    this.tick = this.tick.bind(this);
   }
 
   tick(){
@@ -17,14 +16,18 @@ class Clock extends React.Component {
   componentDidMount(){
     //Function is run after component renders intially
     //Use setinterval to call tick every second 
-    setInterval(this.tick, 1000);
+    this.intervalId = setInterval(this.tick, 1000);
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.intervalId);
   }
 
   render(){
     return (
      <div> 
-       <h1>Clock </h1>
-        {this.state.time.toLocaleString()}
+       <h1 className="clock">Clock </h1>
+        <a className="clock"> {this.state.time.toLocaleString()} </a>
      </div>
     );
   }
