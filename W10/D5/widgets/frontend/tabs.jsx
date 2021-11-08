@@ -18,14 +18,14 @@ class Tabs extends React.Component{
   render(){
     const tab = this.props.tabs[this.state.selectedIndex];
     return (
-      <div className="tabs">
+      <div className="tabs-container">
         <h1>Tabs</h1>
         <div className="tabs">
           <Header selectedIndex={this.state.selectedIndex} 
           switchTab={this.switchTab}
           tabs={this.props.tabs}>
           </Header>
-          <div className="content">
+          <div className="tab-content">
             <article>
               {tab.content}
             </article>
@@ -35,7 +35,5 @@ class Tabs extends React.Component{
     )
   }
 }
-
-
 
 export default Tabs; 
