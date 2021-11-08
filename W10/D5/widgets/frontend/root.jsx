@@ -1,6 +1,7 @@
 import React from "react";
 import Clock from "./clock";
 import Tabs from "./tabs";
+import Weather from "./weather";
 
 const Root = () =>{
   let tabs=[{ title: "tab1", content: "this is tab1 content" },
@@ -11,6 +12,7 @@ const Root = () =>{
     <div>
       <Clock/>
       <Tabs tabs={tabs}/>
+      <Weather/>
     </div>
   )
 
