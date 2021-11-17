@@ -2,8 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import configureStore from "./store/store";
 import Root from "./components/root";
-import * as Test from "./util/session_api_util"
-import * as Actions from "./actions/session_actions"
+// import * as Test from "./util/session_api_util"
+// import * as Actions from "./actions/session_actions"
+import {fetchBenches} from "./actions/bench_actions"
 
 document.addEventListener("DOMContentLoaded", ()=>{
   let store;
@@ -26,7 +27,5 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.login = Test.postSession
-  window.logout = Actions.logout
-  window.logoutCurrentUser = Actions.logoutCurrentUser
+  window.fetchBenches = fetchBenches;
 });
