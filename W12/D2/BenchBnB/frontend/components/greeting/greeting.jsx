@@ -8,15 +8,17 @@ class Greeting extends React.Component{
 
   render(){
     const {currentUser, logout} = this.props
+    // debugger
     const display = currentUser ? (
       <div>
         <h3>Welcome {currentUser.username}!</h3>
-        <button onClick={logout}>Logout</button>
+        <button onClick={()=>logout()}>Log Out</button>
       </div>
     ) : (
       <div>
         <Link to="/signup">Sign Up</Link>
-        <Link to="/signin">Sign In</Link>
+        <br />
+        <Link to="/login">Log In</Link>
       </div>
     );
 

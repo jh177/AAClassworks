@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import configureStore from "./store/store";
 import Root from "./components/root";
 import * as Test from "./util/session_api_util"
+import * as Actions from "./actions/session_actions"
 
 document.addEventListener("DOMContentLoaded", ()=>{
   const store = configureStore();
@@ -13,4 +14,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   window.login = Test.postSession
+  window.logout = Actions.logout
+  window.logoutCurrentUser = Actions.logoutCurrentUser
 });

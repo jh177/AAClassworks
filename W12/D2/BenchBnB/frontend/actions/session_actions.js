@@ -9,7 +9,7 @@ const receiveCurrentUser = user => ({
   user,
 });
 
-const logoutCurrentUser = () => ({
+export const logoutCurrentUser = () => ({
   type: LOGOUT_CURRENT_USER,
 });
 
