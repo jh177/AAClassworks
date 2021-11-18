@@ -21,11 +21,13 @@ const receiveErrors = (errors) => ({
 export const signup = formUser => dispatch => postUser(formUser)
   .then(user => dispatch(receiveCurrentUser(user)),
     // errors => {console.log(errors);
-      dispatch(receiveErrors(errors.responseJSON))
+      errors=>dispatch(receiveErrors(errors.responseJSON))
   );
 
 export const login = formUser => dispatch => postSession(formUser)
-  .then(user => dispatch(receiveCurrentUser(user)));
+  .then(user => dispatch(receiveCurrentUser(user)),
+    errors => dispatch(receiveErrors(errors.responseJSON))
+);
 
 export const logout = () => dispatch => deleteSession()
   .then(() => dispatch(logoutCurrentUser()));
