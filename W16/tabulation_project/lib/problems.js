@@ -122,7 +122,6 @@ function minChange(coins, amount) {
   })
   
   return table[amount];
-  
 }
 
 
